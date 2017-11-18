@@ -1,15 +1,33 @@
-package com.example.andres.shiroestore;
+package com.example.andres.shiroestore.activity;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.andres.shiroestore.R;
+import com.example.andres.shiroestore.adapter.ProductAdapter;
+import com.example.andres.shiroestore.model.product.Product;
+import com.google.firebase.database.DatabaseReference;
+
+import java.util.ArrayList;
+
 public class AdminMainViewActivity extends AppCompatActivity {
+
+    private RecyclerView mList;
+    private ArrayList<Product> mProducts;
+    private Resources mResource;
+    private ProductAdapter mAdapter;
+    private LinearLayoutManager mManager;
+
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,7 +1,9 @@
-package com.example.andres.shiroestore;
+package com.example.andres.shiroestore.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.andres.shiroestore.R;
 
 public class SingInActivity extends AppCompatActivity {
 

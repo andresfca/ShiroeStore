@@ -1,11 +1,11 @@
-package com.example.andres.shiroestore;
+package com.example.andres.shiroestore.model.product;
 
 /**
  * Created by ANDRES on 15/11/2017.
  */
 
 public class Product {
-    private int id;
+    private String id;
     private String name;
     private int category;
     private int price;
@@ -13,7 +13,7 @@ public class Product {
     private String photo;
     private String detail;
 
-    public Product(int id, String name, int category, int price, int cant, String photo, String detail) {
+    public Product(String id, String name, int category, int price, int cant, String photo, String detail) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -23,11 +23,11 @@ public class Product {
         this.detail = detail;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -77,5 +77,17 @@ public class Product {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public void save() {
+        ProductData.addProduct(this);
+    }
+
+    public void delete(){
+        ProductData.deleteProduct(this);
+    }
+
+    public void edit() {
+        ProductData.editProdduct(this);
     }
 }

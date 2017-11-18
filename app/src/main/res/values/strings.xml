@@ -11,4 +11,12 @@
     <string name="sendEmailNotification">Send me E-mail notifications</string>
     <string name="username">User name</string>
     <string name="email">Email</string>
+    <string name="addNewProduct">New product</string>
+    <string name="itemName">Item name</string>
+    <string name="itemPrice">Item price</string>
+    <string name="category">Category</string>
+    <string name="clear">Clear</string>
+    <string name="create">Create</string>
+    <string name="description">Description</string>
+    <string name="itemCant">Cant</string>
 </resources>

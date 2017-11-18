@@ -25,7 +25,7 @@
         <activity
             android:name=".activity.SingInActivity"/>
         <activity android:name=".activity.ProductDetailActivity" />
-        <activity android:name=".activity.CreateProuct"></activity>
+        <activity android:name=".activity.CreateProuctActivity"></activity>
     </application>
 
 </manifest>

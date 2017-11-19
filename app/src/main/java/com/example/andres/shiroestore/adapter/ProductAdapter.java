@@ -1,6 +1,7 @@
 package com.example.andres.shiroestore.adapter;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,10 @@ import com.example.andres.shiroestore.R;
 import com.example.andres.shiroestore.activity.AdminMainViewActivity;
 import com.example.andres.shiroestore.activity.ProductDetailActivity;
 import com.example.andres.shiroestore.model.product.Product;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -56,6 +61,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         private TextView desciption ;
         private AdminMainViewActivity mActivity;
         private Product mProduct;
+        private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
         public ProductViewHolder(View itemView) {
             super(itemView);
@@ -68,6 +74,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
 
         public void bindView(Product product, AdminMainViewActivity activity) {
+            mProduct = product;
+            mActivity = activity;
+
+            storageReference.child(product.getPhoto()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.with(mActivity).load(uri).into(photo);
+                }
+            });
+            price.setText("$" + String.valueOf(product.getPrice()));
+            cant.setText(String.valueOf(product.getPrice()));
+            desciption.setText(product.getDetail());
+            name.setText(product.getName());
+            //color.setText(mMainActivity.getResources().getStringArray(R.array.arrayColor)[mCar.getColor()]);
 
         }
 

@@ -19,4 +19,22 @@
     <string name="create">Create</string>
     <string name="description">Description</string>
     <string name="itemCant">Cant</string>
+    <string name="videoGame">Video game</string>
+    <string name="accessory">Accessory</string>
+    <string name="manga">Manga</string>
+    <string name="selectImage">Select image</string>
+    <string name="typeImage">image/*</string>
+    <string name="productAdded">A new product has been aded</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="hey">HEY!!</string>
+    <string name="deleteUser">You want to delete this user</string>
+    <string name="cancel">Cancel</string>
+
+    <string-array name="categoryArray">
+        <item>@string/videoGame</item>
+        <item>@string/accessory</item>
+        <item>@string/manga</item>
+    </string-array>
+
 </resources>

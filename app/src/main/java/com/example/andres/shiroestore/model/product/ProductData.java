@@ -15,6 +15,10 @@ public class ProductData {
 
     public static ArrayList<Product> mProducts = new ArrayList<>();
 
+    public static String getId(){
+        return databaseReference.push().getKey();
+    }
+
     public static void addProduct(Product product){
         product.setId(databaseReference.push().getKey());
         databaseReference.child(FinalString.productsDB).child(product.getId()).setValue(product);
@@ -28,7 +32,8 @@ public class ProductData {
         databaseReference.child(FinalString.productsDB).child(product.getId()).setValue(product);
     }
 
-    public static ArrayList<Product> getProduct(){
+    public static ArrayList<Product> getProducts(){
         return mProducts;
     }
+
 }

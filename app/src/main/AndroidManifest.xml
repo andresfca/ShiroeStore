@@ -22,10 +22,10 @@
         <activity
             android:name=".activity.AdminMainViewActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activity.SingInActivity"/>
+        <activity android:name=".activity.SingInActivity" />
         <activity android:name=".activity.ProductDetailActivity" />
-        <activity android:name=".activity.CreateProuctActivity"></activity>
+        <activity android:name=".activity.CreateProuctActivity" />
+        <activity android:name=".activity.ProductEditActivity"></activity>
     </application>
 
 </manifest>

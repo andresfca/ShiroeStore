@@ -23,6 +23,10 @@ public class Product {
         this.detail = detail;
     }
 
+    public Product(String id) {
+        this.id = id;
+    }
+
     public String getId() {
         return id;
     }

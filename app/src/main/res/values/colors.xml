@@ -3,4 +3,7 @@
     <color name="colorPrimary">#2196f3</color>
     <color name="colorPrimaryDark">#2196f3</color>
     <color name="colorAccent">@android:color/white</color>
+
+    <color name="shadown_color">#66000000</color>
+    <color name="ripple_color">#99FFFFFF</color>
 </resources>

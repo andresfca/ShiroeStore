@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.andres.shiroestore.FinalString;
 import com.example.andres.shiroestore.R;
@@ -29,6 +30,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private CollapsingToolbarLayout mToolbarLayout;
 
     private ImageView mPhoto;
+    private TextView mPriceDetail, mCantDetail, mDescriptionDetail;
 
     private String id, name, photo, detail;
     private int category, price, cant;
@@ -45,6 +47,9 @@ public class ProductDetailActivity extends AppCompatActivity {
         mToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);
 
         mPhoto = (ImageView) findViewById(R.id.app_bar_image);
+        mPriceDetail = (TextView) findViewById(R.id.itemDetailPrice);
+        mCantDetail = (TextView) findViewById(R.id.itemDetailCant);
+        mDescriptionDetail = (TextView) findViewById(R.id.itemDetailDescription);
 
         Intent intent = getIntent();
         mBundle = intent.getBundleExtra(FinalString.DATA);
@@ -64,6 +69,9 @@ public class ProductDetailActivity extends AppCompatActivity {
                 Picasso.with(ProductDetailActivity.this).load(uri).into(mPhoto);
             }
         });
+        mPriceDetail.setText("$" + String.valueOf(price));
+        mCantDetail.setText(String.valueOf(cant));
+        mDescriptionDetail.setText(detail);
 
     }
 

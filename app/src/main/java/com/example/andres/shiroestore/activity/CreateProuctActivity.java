@@ -123,7 +123,7 @@ public class CreateProuctActivity extends AppCompatActivity {
     private void clean() {
         mName.setText("");
         mDetail.setText("");
-        mPhoto.setImageResource(R.drawable.defaultProductImage);
+        mPhoto.setImageResource(R.drawable.defaultproductimage);
         mPrice.setText("");
         mCant.setText("");
     }

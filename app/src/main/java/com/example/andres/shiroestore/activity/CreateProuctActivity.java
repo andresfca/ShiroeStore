@@ -76,7 +76,6 @@ public class CreateProuctActivity extends AppCompatActivity {
                 selectPhoto();
             }
         });
-
         mCreateProdut.setOnClickListener(mCreateListener);
         mClean.setOnClickListener(mCleanListener);
 

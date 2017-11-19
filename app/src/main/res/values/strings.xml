@@ -30,6 +30,8 @@
     <string name="hey">HEY!!</string>
     <string name="deleteUser">You want to delete this user</string>
     <string name="cancel">Cancel</string>
+    <string name="editProduct">Edit product</string>
+    <string name="productUpdated">Product has been updated</string>
 
     <string-array name="categoryArray">
         <item>@string/videoGame</item>

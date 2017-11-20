@@ -95,8 +95,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/background_light"
+                android:onClick="login"
                 android:text="@string/login"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/txtCreateAccount"

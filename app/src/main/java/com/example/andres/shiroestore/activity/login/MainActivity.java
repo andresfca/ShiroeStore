@@ -1,6 +1,7 @@
 package com.example.andres.shiroestore.activity.login;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,33 +13,55 @@ import android.widget.Toast;
 import com.example.andres.shiroestore.R;
 import com.example.andres.shiroestore.activity.admin.AdminMainViewActivity;
 import com.example.andres.shiroestore.activity.user.StoreActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button mLogin;
     private TextView mCreateAccount;
-    private EditText mUserLogin;
+    private EditText mUserLogin, user,password;
     private String var;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
 
-    private View.OnClickListener mListenerCreateAccount = new View.OnClickListener() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        authStateListener = new FirebaseAuth.AuthStateListener(){
+
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+            }
+        };
+    }
+
+
+   /* private View.OnClickListener mListenerCreateAccount = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(MainActivity.this, SingInActivity.class);
             startActivity(intent);
         }
-    };
+    };*/
 
-    private View.OnClickListener mListenerLogin = new View.OnClickListener() {
+ /*   private View.OnClickListener mListenerLogin = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
             var = mUserLogin.getText().toString();
-            if (var.equalsIgnoreCase("bryan")) {
+            if (var.equalsIgnoreCase("Andres")) {
                 Intent intent = new Intent(MainActivity.this, AdminMainViewActivity.class);
                 startActivity(intent);
                 finish();
             } else {
-                if (var.equalsIgnoreCase("andres")){
+                if (var.equalsIgnoreCase("user")){
                     Intent intent = new Intent(MainActivity.this, StoreActivity.class);
                     startActivity(intent);
                     finish();
@@ -47,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-    };
+    };*/
 
-    @Override
+   /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -60,6 +83,27 @@ public class MainActivity extends AppCompatActivity {
 
         mLogin.setOnClickListener(mListenerLogin);
         mCreateAccount.setOnClickListener(mListenerCreateAccount);
+    }*/
+    public void login(String email, String password){
+        firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Intent i = new Intent(MainActivity.this,StoreActivity.class);
+                    startActivity(i);
+                    finish();
+                }else {
+                    Toast.makeText(MainActivity.this, task.getException()
+                            .getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
+    public void login(View v){
+        user = (EditText)findViewById(R.id.txtLoginUser);
+        password = (EditText)findViewById(R.id.txtLoginPassword);
+        login(user.getText().toString(),password.getText().toString());
+    }
+
 
 }

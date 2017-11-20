@@ -108,16 +108,18 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
+                android:checked="false"
                 android:text="@string/sendEmailNotification"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/background_light"
+                android:onClick="crearUsuario"
                 android:text="@string/singUp"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

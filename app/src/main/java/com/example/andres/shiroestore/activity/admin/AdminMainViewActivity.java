@@ -1,10 +1,9 @@
-package com.example.andres.shiroestore.activity;
+package com.example.andres.shiroestore.activity.admin;
 
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +14,7 @@ import android.view.MenuItem;
 
 import com.example.andres.shiroestore.FinalString;
 import com.example.andres.shiroestore.R;
+import com.example.andres.shiroestore.activity.login.MainActivity;
 import com.example.andres.shiroestore.adapter.ProductAdapter;
 import com.example.andres.shiroestore.model.product.Product;
 import com.google.firebase.database.DataSnapshot;

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.login.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,13 +20,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.AdminMainViewActivity"
+            android:name=".activity.admin.AdminMainViewActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.SingInActivity" />
-        <activity android:name=".activity.ProductDetailActivity" />
-        <activity android:name=".activity.CreateProuctActivity" />
-        <activity android:name=".activity.ProductEditActivity" />
-        <activity android:name=".activity.UserMainActivity"></activity>
+        <activity android:name=".activity.login.SingInActivity" />
+        <activity android:name=".activity.admin.ProductDetailActivity" />
+        <activity android:name=".activity.admin.CreateProuctActivity" />
+        <activity android:name=".activity.admin.ProductEditActivity" />
+        <activity android:name=".activity.user.UserMainActivity" />
+        <activity android:name=".activity.user.StoreActivity"></activity>
     </application>
 
 </manifest>

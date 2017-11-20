@@ -1,4 +1,4 @@
-package com.example.andres.shiroestore.activity;
+package com.example.andres.shiroestore.activity.admin;
 
 import android.content.Intent;
 import android.net.Uri;

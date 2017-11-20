@@ -1,4 +1,4 @@
-package com.example.andres.shiroestore.activity;
+package com.example.andres.shiroestore.activity.admin;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -78,11 +78,6 @@ public class ProductEditActivity extends AppCompatActivity {
         mEditProdut = (Button) findViewById(R.id.btnEdit);
         mClean = (Button) findViewById(R.id.btnEditClear);
 
-        mSpinnerOptions = getResources().getStringArray(R.array.categoryArray);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, mSpinnerOptions);
-        mCategory.setAdapter(adapter);
-
-        mStorageRef = FirebaseStorage.getInstance().getReference();
 
         Intent intent = getIntent();
         mBundle = intent.getBundleExtra(FinalString.DATA);
@@ -95,6 +90,12 @@ public class ProductEditActivity extends AppCompatActivity {
         photo = mBundle.getString(FinalString.PRODUCT_PHOTO);
         detail = mBundle.getString(FinalString.PRODUCT_DETAIL);
 
+        mSpinnerOptions = getResources().getStringArray(R.array.categoryArray);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, mSpinnerOptions);
+        mCategory.setAdapter(adapter);
+
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+
         mName.setText(name);
         mStorageRef.child(photo).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -105,7 +106,7 @@ public class ProductEditActivity extends AppCompatActivity {
         mPrice.setText("$" + String.valueOf(price));
         mCant.setText(String.valueOf(cant));
         mDetail.setText(detail);
-        mCategory.setSelection(category);
+        //mCategory.setSelection(category);
 
         mEditProdut.setOnClickListener(mEditListener);
         mClean.setOnClickListener(mCleanListener);

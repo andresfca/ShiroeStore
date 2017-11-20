@@ -1,8 +1,10 @@
 package com.example.andres.shiroestore.adapter;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +16,10 @@ import com.example.andres.shiroestore.FinalString;
 import com.example.andres.shiroestore.R;
 import com.example.andres.shiroestore.activity.admin.AdminMainViewActivity;
 import com.example.andres.shiroestore.activity.admin.ProductDetailActivity;
+import com.example.andres.shiroestore.activity.user.StoreActivity;
+import com.example.andres.shiroestore.activity.user.UserMainActivity;
 import com.example.andres.shiroestore.model.product.Product;
+import com.example.andres.shiroestore.model.product.ProductData;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -23,27 +28,27 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * Created by ANDRES on 18/11/2017.
+ * Created by ANDRES on 19/11/2017.
  */
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
+public class UserProductAdapter extends RecyclerView.Adapter<UserProductAdapter.UserProductViewHolder>  {
 
-    private AdminMainViewActivity mActivity;
+    private UserMainActivity mActivity;
     private ArrayList<Product> mProducts;
 
-    public ProductAdapter(AdminMainViewActivity adminMainViewActivity, ArrayList<Product> products) {
+    public UserProductAdapter(UserMainActivity adminMainViewActivity, ArrayList<Product> products) {
         this.mActivity = adminMainViewActivity;
         this.mProducts = products;
     }
 
     @Override
-    public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public UserProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item, parent, false);
-        return new ProductViewHolder(view);
+        return new UserProductViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ProductViewHolder holder, int position) {
+    public void onBindViewHolder(UserProductViewHolder holder, int position) {
         holder.bindView(mProducts.get(position), mActivity);
     }
 
@@ -52,18 +57,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return mProducts.size();
     }
 
-    public static class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class UserProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView photo;
         private TextView price ;
         private TextView name ;
         private TextView cant ;
         private TextView desciption ;
-        private AdminMainViewActivity mActivity;
+        private UserMainActivity mActivity;
         private Product mProduct;
         private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
-        public ProductViewHolder(View itemView) {
+        public UserProductViewHolder(View itemView) {
             super(itemView);
             photo = (ImageView) itemView.findViewById(R.id.itemImge);
             price = (TextView) itemView.findViewById(R.id.itemPrice);
@@ -73,7 +78,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             itemView.setOnClickListener(this);
         }
 
-        public void bindView(Product product, AdminMainViewActivity activity) {
+        public void bindView(Product product, UserMainActivity activity) {
             mProduct = product;
             mActivity = activity;
 
@@ -91,7 +96,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(mActivity, ProductDetailActivity.class);
+            /*Intent intent = new Intent(mActivity, StoreActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString(FinalString.PRODUCT_ID, mProduct.getId());
             bundle.putString(FinalString.PRODUCT_NAME, mProduct.getName());
@@ -102,7 +107,31 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             bundle.putString(FinalString.PRODUCT_DETAIL, mProduct.getDetail());
 
             intent.putExtra(FinalString.DATA, bundle);
-            mActivity.startActivity(intent);
+            mActivity.startActivity(intent);*/
+            String positive,negative;
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+            builder.setTitle(R.string.hey);
+            builder.setMessage(R.string.buyItem);
+            positive = mActivity.getString(R.string.buy);
+            negative = mActivity.getString(R.string.cancel);
+
+
+            builder.setPositiveButton(positive, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            builder.setNegativeButton(negative, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
     }
+
 }

@@ -1,4 +1,4 @@
-package com.example.andres.shiroestore.activity;
+package com.example.andres.shiroestore.activity.admin;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,17 +11,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.andres.shiroestore.FinalString;
 import com.example.andres.shiroestore.R;
+import com.example.andres.shiroestore.activity.login.MainActivity;
 import com.example.andres.shiroestore.model.product.Product;
 import com.example.andres.shiroestore.model.product.ProductData;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
-
-import static android.R.attr.id;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
@@ -84,7 +84,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         positive = getResources().getString(R.string.delete);
         negative = getString(R.string.cancel);
 
-
         builder.setPositiveButton(positive, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -103,16 +102,25 @@ public class ProductDetailActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public void edit(View v){
+    public void edit2(View v){
+        Toast.makeText(ProductDetailActivity.this, "rvkj", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(ProductDetailActivity.this, ProductEditActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(FinalString.PRODUCT_ID,id);
+        bundle.putString(FinalString.PRODUCT_NAME, name);
+        bundle.putInt(FinalString.PRODUCT_CATEGORY, category);
+        bundle.putInt(FinalString.PRODUCT_PRICE, price);
+        bundle.putInt(FinalString.PRODUCT_CANT, cant);
+        bundle.putString(FinalString.PRODUCT_PHOTO, photo);
+        bundle.putString(FinalString.PRODUCT_DETAIL, detail);
         intent.putExtra(FinalString.DATA, mBundle);
         startActivity(intent);
     }
 
     public void onBackPressed(){
-        finish();
-        Intent i = new Intent(ProductDetailActivity.this, MainActivity.class);
+        Intent i = new Intent(ProductDetailActivity.this, ProductDetailActivity.class);
         startActivity(i);
+        finish();
     }
 
 }

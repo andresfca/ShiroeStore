@@ -32,6 +32,9 @@
     <string name="cancel">Cancel</string>
     <string name="editProduct">Edit product</string>
     <string name="productUpdated">Product has been updated</string>
+    <string name="buyItem">You want to buy this item?</string>
+    <string name="buy">Buy</string>
+    <string name="userPasswordIncorrect">User or pasword incorrect</string>
 
     <string-array name="categoryArray">
         <item>@string/videoGame</item>

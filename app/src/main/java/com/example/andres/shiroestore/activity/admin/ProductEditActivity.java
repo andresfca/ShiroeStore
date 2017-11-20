@@ -1,6 +1,7 @@
 package com.example.andres.shiroestore.activity.admin;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -67,6 +68,19 @@ public class ProductEditActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar5);
         setSupportActionBar(toolbar);
+
+        Drawable arrow = getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setHomeAsUpIndicator(arrow);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mName = (EditText) findViewById(R.id.txtEditName);
         mCategory = (Spinner) findViewById(R.id.cmdEditCategory);
@@ -135,12 +149,13 @@ public class ProductEditActivity extends AppCompatActivity {
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Return();
+                onBackPressed();
             }
         });
     }
 
-    private void Return() {
+    @Override
+    public void onBackPressed() {
         String newName = mName.getText().toString();
         int newPrice = Integer.parseInt(mPrice.getText().toString());
         int newCant = Integer.parseInt(mCant.getText().toString());
@@ -174,7 +189,7 @@ public class ProductEditActivity extends AppCompatActivity {
         if (filePath !=null) uploadImage(photo);
         mProduct.edit();
         Snackbar.make(v, R.string.productUpdated, Snackbar.LENGTH_LONG).setAction("action", null).show();
-        Return();
+        onBackPressed();
     }
 
     private void clean() {

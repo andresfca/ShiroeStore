@@ -39,12 +39,6 @@
                 app:layout_collapseMode="pin"
                 app:theme="@style/AppTheme.PopupOverlay">
 
-                <ImageView
-                    android:id="@+id/imgDetailBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
-
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>

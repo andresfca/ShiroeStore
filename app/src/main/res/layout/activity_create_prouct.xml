@@ -18,12 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.0">
 
-        <ImageView
-            android:id="@+id/imgBackArrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
-            app:srcCompat="@drawable/ic_arrow_back_white_24dp"/>
+
 
         <TextView
             android:id="@+id/txtAppTitle"

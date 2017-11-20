@@ -2,6 +2,7 @@ package com.example.andres.shiroestore.activity.admin;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AlertDialog;
@@ -42,6 +43,19 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar4);
         setSupportActionBar(toolbar);
+
+        Drawable arrow = getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setHomeAsUpIndicator(arrow);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         storageReference = FirebaseStorage.getInstance().getReference();
         mToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);

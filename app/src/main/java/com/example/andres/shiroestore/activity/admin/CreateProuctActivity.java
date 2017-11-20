@@ -1,6 +1,7 @@
 package com.example.andres.shiroestore.activity.admin;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -54,6 +55,19 @@ public class CreateProuctActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_prouct);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
+
+        Drawable arrow = getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setHomeAsUpIndicator(arrow);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mName = (EditText) findViewById(R.id.txtName);
         mDetail = (EditText) findViewById(R.id.txtDetail);

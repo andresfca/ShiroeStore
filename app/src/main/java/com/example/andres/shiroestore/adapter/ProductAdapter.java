@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.andres.shiroestore.FinalString;
 import com.example.andres.shiroestore.R;
@@ -20,6 +21,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.io.Console;
 import java.util.ArrayList;
 
 /**
@@ -84,7 +86,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 }
             });
             price.setText("$" + String.valueOf(product.getPrice()));
-            cant.setText(String.valueOf(product.getPrice()));
+            cant.setText(String.valueOf(product.getCant()));
             desciption.setText(product.getDetail());
             name.setText(product.getName());
         }
@@ -100,9 +102,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             bundle.putInt(FinalString.PRODUCT_CANT, mProduct.getCant());
             bundle.putString(FinalString.PRODUCT_PHOTO, mProduct.getPhoto());
             bundle.putString(FinalString.PRODUCT_DETAIL, mProduct.getDetail());
-
             intent.putExtra(FinalString.DATA, bundle);
             mActivity.startActivity(intent);
+            mActivity.finish();
         }
     }
 }

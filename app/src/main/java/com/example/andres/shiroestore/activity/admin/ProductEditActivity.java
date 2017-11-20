@@ -37,7 +37,6 @@ public class ProductEditActivity extends AppCompatActivity {
     private StorageReference mStorageRef;
     private String[] mSpinnerOptions;
     private Uri filePath;
-
     private Bundle mBundle;
 
     private View.OnClickListener mEditListener = new View.OnClickListener() {
@@ -103,10 +102,9 @@ public class ProductEditActivity extends AppCompatActivity {
                 Picasso.with(ProductEditActivity.this).load(uri).into(mPhoto);
             }
         });
-        mPrice.setText("$" + String.valueOf(price));
+        mPrice.setText(String.valueOf(price));
         mCant.setText(String.valueOf(cant));
         mDetail.setText(detail);
-        //mCategory.setSelection(category);
 
         mEditProdut.setOnClickListener(mEditListener);
         mClean.setOnClickListener(mCleanListener);
@@ -143,8 +141,25 @@ public class ProductEditActivity extends AppCompatActivity {
     }
 
     private void Return() {
-        Intent i = new Intent(ProductEditActivity.this, ProductDetailActivity.class);
-        startActivity(i);
+        String newName = mName.getText().toString();
+        int newPrice = Integer.parseInt(mPrice.getText().toString());
+        int newCant = Integer.parseInt(mCant.getText().toString());
+        String newDetail = mDetail.getText().toString();
+        int newCategory = mCategory.getSelectedItemPosition();
+
+        Product mProduct = new Product(id, newName, newCategory, newPrice, newCant, photo, newDetail);
+
+        Intent intent = new Intent(ProductEditActivity.this, ProductDetailActivity.class);
+        Bundle newBundle = new Bundle();
+        newBundle.putString(FinalString.PRODUCT_ID, id);
+        newBundle.putString(FinalString.PRODUCT_NAME, mProduct.getName());
+        newBundle.putInt(FinalString.PRODUCT_CATEGORY, mProduct.getCategory());
+        newBundle.putInt(FinalString.PRODUCT_PRICE, mProduct.getPrice());
+        newBundle.putInt(FinalString.PRODUCT_CANT, mProduct.getCant());
+        newBundle.putString(FinalString.PRODUCT_PHOTO, mProduct.getPhoto());
+        newBundle.putString(FinalString.PRODUCT_DETAIL, mProduct.getDetail());
+        intent.putExtra(FinalString.DATA, newBundle);
+        startActivity(intent);
         finish();
     }
 
@@ -155,9 +170,9 @@ public class ProductEditActivity extends AppCompatActivity {
         String newDetail = mDetail.getText().toString();
         int newCategory = mCategory.getSelectedItemPosition();
 
-        Product product = new Product(id, newName, newCategory, newPrice, newCant, photo, newDetail);
+        Product mProduct = new Product(id, newName, newCategory, newPrice, newCant, photo, newDetail);
         if (filePath !=null) uploadImage(photo);
-        product.edit();
+        mProduct.edit();
         Snackbar.make(v, R.string.productUpdated, Snackbar.LENGTH_LONG).setAction("action", null).show();
         Return();
     }

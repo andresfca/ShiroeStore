@@ -103,22 +103,14 @@ public class ProductDetailActivity extends AppCompatActivity {
     }
 
     public void edit2(View v){
-        Toast.makeText(ProductDetailActivity.this, "rvkj", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(ProductDetailActivity.this, ProductEditActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString(FinalString.PRODUCT_ID,id);
-        bundle.putString(FinalString.PRODUCT_NAME, name);
-        bundle.putInt(FinalString.PRODUCT_CATEGORY, category);
-        bundle.putInt(FinalString.PRODUCT_PRICE, price);
-        bundle.putInt(FinalString.PRODUCT_CANT, cant);
-        bundle.putString(FinalString.PRODUCT_PHOTO, photo);
-        bundle.putString(FinalString.PRODUCT_DETAIL, detail);
         intent.putExtra(FinalString.DATA, mBundle);
         startActivity(intent);
+        finish();
     }
 
     public void onBackPressed(){
-        Intent i = new Intent(ProductDetailActivity.this, ProductDetailActivity.class);
+        Intent i = new Intent(ProductDetailActivity.this, AdminMainViewActivity.class);
         startActivity(i);
         finish();
     }

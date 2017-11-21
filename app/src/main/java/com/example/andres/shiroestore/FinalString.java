@@ -1,9 +1,5 @@
 package com.example.andres.shiroestore;
 
-/**
- * Created by ANDRES on 18/11/2017.
- */
-
 public class FinalString {
     public static String productsDB = "Product";
     public static String userDB = "User";

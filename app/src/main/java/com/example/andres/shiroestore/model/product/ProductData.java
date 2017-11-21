@@ -6,10 +6,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-/**
- * Created by ANDRES on 18/11/2017.
- */
-
 public class ProductData {
     private static DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 

@@ -8,6 +8,7 @@
     android:background="@color/colorPrimaryDark"
     tools:context="com.example.andres.shiroestore.activity.login.SingInActivity">
 
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="0dp"
@@ -80,12 +81,24 @@
                 android:textColorLink="@android:color/background_light">
 
                 <EditText
+                    android:id="@+id/txtSingUpEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/background_light"
                     android:hint="@string/email"
-                    android:id="@+id/txtSingUpEmail"/>
+                    android:inputType="textEmailAddress" />
             </android.support.design.widget.TextInputLayout>
+
+            <ProgressBar
+                android:id="@+id/circularProgress"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:foregroundGravity="center"
+                android:visibility="gone"></ProgressBar>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -95,29 +108,36 @@
                 android:textColorLink="@android:color/background_light">
 
                 <EditText
+                    android:id="@+id/txtSingUpPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/background_light"
                     android:hint="@string/password"
-                    android:id="@+id/txtSingUpPassword"/>
+                    android:inputType="textPassword"
+                    app:passwordToggleEnabled="true" />
             </android.support.design.widget.TextInputLayout>
 
             <Switch
-                android:id="@+id/switch1"
+                android:id="@+id/swtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="@string/sendEmailNotification"
-                android:textColor="@android:color/white"/>
+                android:checked="false"
+                android:text="@string/ShowPassword"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/background_light"
+                android:onClick="crearUsuario"
                 android:text="@string/singUp"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimary" />
+
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

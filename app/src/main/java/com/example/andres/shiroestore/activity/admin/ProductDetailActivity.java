@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -90,7 +91,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     }
 
     public void delete(View v){
-        String positive,negative;
+        final String positive,negative;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.hey);
@@ -109,11 +110,11 @@ public class ProductDetailActivity extends AppCompatActivity {
         builder.setNegativeButton(negative, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
             }
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.holo_blue_light);
     }
 
     public void edit2(View v){

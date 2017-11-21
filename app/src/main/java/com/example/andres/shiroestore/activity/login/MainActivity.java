@@ -1,12 +1,15 @@
 package com.example.andres.shiroestore.activity.login;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private String var;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
+    private ProgressBar miprogress;
+    private ObjectAnimator anim;
 
    /* protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
    protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_main);
+
+       miprogress = (ProgressBar) findViewById(R.id.circularProgress);
+       anim = ObjectAnimator.ofInt(miprogress, "progress", 0, 100);
 
        mLogin = (Button) findViewById(R.id.btnLogin);
        mCreateAccount = (TextView) findViewById(R.id.txtCreateAccount);
@@ -108,9 +116,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void login(View v){
+        mostrarProgress();
         user = (EditText)findViewById(R.id.txtLoginUser);
         password = (EditText)findViewById(R.id.txtLoginPassword);
         login(user.getText().toString(),password.getText().toString());
+    }
+
+    private void mostrarProgress() {
+        //agregamos el tiempo de la animacion a mostrar
+        anim.setDuration(15000);
+        anim.setInterpolator(new DecelerateInterpolator());
+        miprogress.setVisibility(View.VISIBLE);
+        //iniciamos el progressbar
+        anim.start();
     }
 
 

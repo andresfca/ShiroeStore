@@ -73,6 +73,16 @@
                     android:inputType="textEmailAddress"
                     android:textColorLink="@android:color/background_light" />
             </android.support.design.widget.TextInputLayout>
+            <ProgressBar
+                android:id="@+id/circularProgress"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:foregroundGravity="center"
+                android:visibility="gone"></ProgressBar>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"

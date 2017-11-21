@@ -1,5 +1,6 @@
 package com.example.andres.shiroestore.activity.login;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +8,10 @@ import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -27,10 +30,15 @@ public class SingInActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private Switch swtShowPassword;
+    private ProgressBar miprogress;
+    private ObjectAnimator anim;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_in);
+
+        miprogress = (ProgressBar) findViewById(R.id.circularProgress);
+        anim = ObjectAnimator.ofInt(miprogress, "progress", 0, 100);
 
         swtShowPassword=(Switch)findViewById(R.id.swtPassword);
         userName=(EditText)findViewById(R.id.txtSingUpUserName);
@@ -58,7 +66,16 @@ public class SingInActivity extends AppCompatActivity {
             }
         };
     }
+    private void mostrarProgress() {
+        //agregamos el tiempo de la animacion a mostrar
+        anim.setDuration(15000);
+        anim.setInterpolator(new DecelerateInterpolator());
+        miprogress.setVisibility(View.VISIBLE);
+        //iniciamos el progressbar
+        anim.start();
+    }
     public void crearUsuario(String email,String password){
+        mostrarProgress();
         firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

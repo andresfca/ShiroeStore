@@ -27,7 +27,8 @@
         <activity android:name=".activity.admin.CreateProuctActivity" />
         <activity android:name=".activity.admin.ProductEditActivity" />
         <activity android:name=".activity.user.UserMainActivity" />
-        <activity android:name=".activity.user.StoreActivity"></activity>
+        <activity android:name=".activity.user.StoreActivity" />
+        <activity android:name=".SplashScreen"></activity>
     </application>
 
 </manifest>

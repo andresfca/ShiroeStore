@@ -24,10 +24,6 @@ import com.squareup.picasso.Picasso;
 import java.io.Console;
 import java.util.ArrayList;
 
-/**
- * Created by ANDRES on 18/11/2017.
- */
-
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private AdminMainViewActivity mActivity;

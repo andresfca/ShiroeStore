@@ -1,8 +1,5 @@
 package com.example.andres.shiroestore.model.product;
 
-/**
- * Created by ANDRES on 15/11/2017.
- */
 
 public class Product {
     private String id;

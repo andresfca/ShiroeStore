@@ -7,7 +7,7 @@
     <string name="login">LOGIN</string>
     <string name="createAccount">Create an account</string>
     <string name="newAccount">New Account</string>
-    <string name="singUp">SingUp</string>
+    <string name="singUp">SignUp</string>
     <string name="sendEmailNotification">Send me E-mail notifications</string>
     <string name="username">User name</string>
     <string name="email">Email</string>

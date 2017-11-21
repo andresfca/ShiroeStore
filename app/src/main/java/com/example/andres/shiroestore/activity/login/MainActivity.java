@@ -28,30 +28,43 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
 
-    protected void onCreate(Bundle savedInstanceState) {
+   /* protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        authStateListener = new FirebaseAuth.AuthStateListener(){
 
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-            }
-        };
-    }
+    }*/
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+
+       mLogin = (Button) findViewById(R.id.btnLogin);
+       mCreateAccount = (TextView) findViewById(R.id.txtCreateAccount);
+       mUserLogin = (EditText) findViewById(R.id.txtLoginUser);
+
+       //mLogin.setOnClickListener(mListenerLogin);
+       mCreateAccount.setOnClickListener(mListenerCreateAccount);
+       firebaseAuth = FirebaseAuth.getInstance();
+       authStateListener = new FirebaseAuth.AuthStateListener(){
+
+           @Override
+           public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+               FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+           }
+       };
+   }
 
 
-   /* private View.OnClickListener mListenerCreateAccount = new View.OnClickListener() {
+    private View.OnClickListener mListenerCreateAccount = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(MainActivity.this, SingInActivity.class);
             startActivity(intent);
         }
-    };*/
+    };
 
- /*   private View.OnClickListener mListenerLogin = new View.OnClickListener() {
+   /* private View.OnClickListener mListenerLogin = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
@@ -72,19 +85,13 @@ public class MainActivity extends AppCompatActivity {
         }
     };*/
 
-   /* @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        mLogin = (Button) findViewById(R.id.btnLogin);
-        mCreateAccount = (TextView) findViewById(R.id.txtCreateAccount);
-        mUserLogin = (EditText) findViewById(R.id.txtLoginUser);
-
-        mLogin.setOnClickListener(mListenerLogin);
-        mCreateAccount.setOnClickListener(mListenerCreateAccount);
-    }*/
     public void login(String email, String password){
+            if (email.equalsIgnoreCase("acantill26@cuc.edu.co") && password.equalsIgnoreCase("123456789")) {
+                Intent intent = new Intent(MainActivity.this, AdminMainViewActivity.class);
+                startActivity(intent);
+                finish();
+            }
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -96,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, task.getException()
                             .getMessage(),Toast.LENGTH_LONG).show();
                 }
+
             }
         });
     }

@@ -95,22 +95,26 @@
                 android:textColorLink="@android:color/background_light">
 
                 <EditText
+                    android:id="@+id/txtSingUpPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/background_light"
                     android:hint="@string/password"
-                    android:id="@+id/txtSingUpPassword"/>
+                    android:inputType="textPassword"
+                    app:passwordToggleEnabled="true" />
             </android.support.design.widget.TextInputLayout>
 
             <Switch
-                android:id="@+id/switch1"
+                android:id="@+id/swtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:checked="false"
-                android:text="@string/sendEmailNotification"
-                android:textColor="@android:color/white" />
+                android:text="@string/ShowPassword"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/button2"

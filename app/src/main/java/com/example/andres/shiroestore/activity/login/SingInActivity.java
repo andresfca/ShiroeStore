@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.andres.shiroestore.R;
@@ -22,14 +26,29 @@ public class SingInActivity extends AppCompatActivity {
     private EditText userName;
     private EditText email;
     private EditText password;
+    private Switch swtShowPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_in);
 
+        swtShowPassword=(Switch)findViewById(R.id.swtPassword);
         userName=(EditText)findViewById(R.id.txtSingUpUserName);
         email =(EditText)findViewById(R.id.txtSingUpEmail);
         password= (EditText)findViewById(R.id.txtSingUpPassword);
+        swtShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // checkbox status is changed from uncheck to checked.
+                if (!isChecked) {
+                    // show password
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else {
+                    // hide password
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }
+        });
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener(){
 

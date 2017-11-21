@@ -35,6 +35,7 @@
     <string name="buyItem">You want to buy this item?</string>
     <string name="buy">Buy</string>
     <string name="userPasswordIncorrect">User or pasword incorrect</string>
+    <string name="ShowPassword">Show password</string>
 
     <string-array name="categoryArray">
         <item>@string/videoGame</item>
